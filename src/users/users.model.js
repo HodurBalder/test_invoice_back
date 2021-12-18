@@ -19,23 +19,27 @@ const schema = new Schema({
     },
 
     company: {
-        type: String,
+        type: String
+    },
+
+    logo: {
+        type: String
     },
 
     fullName: {
-        type: String,
+        type: String
     },
 
     website: {
-        type: String,
+        type: String
     },
 
     address: {
-        type: String,
+        type: String
     },
 
     zipCode: {
-        type: String,
+        type: String
     },
 
     country: {

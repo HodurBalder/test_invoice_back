@@ -45,6 +45,7 @@ function validator(options) {
             'objectId',
             'email',
             'phone',
+            'array'
         ]
 
         const EXISTS = VALUE != null && VALUE != undefined && VALUE != '' || VALUE === 0
@@ -104,6 +105,9 @@ function validator(options) {
             return $this.OPTIONS.VALUE = null
 
         error(`${ NAME } no es un tipo de dato valido`)
+
+        if(TYPE === 'array')
+            return $this.OPTIONS.VALUE = []
     }
 
     function validType() {
@@ -163,6 +167,12 @@ function validator(options) {
                     return error(`${NAME} no es un dato válido, se espera un identificador`)
 
                 $this.OPTIONS.VALUE = new ObjectId(VALUE)
+
+            },
+            array: () => {
+
+                if(!(VALUE instanceof Array))
+                    return error(`${NAME} no es un dato válido, se espera un arreglo de elementos`)
             }
         }
     }
