@@ -1,6 +1,6 @@
 const Schema = require('mongoose').Schema
 const Model = require('mongoose').model
-
+const Encrypt = require('../encryp')
 
 const schema = new Schema({
 
@@ -73,6 +73,9 @@ const schema = new Schema({
 })
 
 schema.pre('save', function(next) {
+
+    if(this.password)
+        this.password = Encrypt.bcryptHash(this.password)
 
     this.updated = new Date()
     next()

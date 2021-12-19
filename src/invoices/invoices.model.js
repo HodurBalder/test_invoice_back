@@ -13,7 +13,7 @@ const schema = new Schema({
         ref: 'Users'
     },
 
-    invoiceId: {
+    invoiceNum: {
         type: Number
     },
 
@@ -64,6 +64,14 @@ const schema = new Schema({
 
     total: {
         type: Number
+    },
+
+    invoiceDate: {
+        type: Date
+    },
+
+    dueDate: {
+        type: Date
     }
 
 })
@@ -71,7 +79,6 @@ const schema = new Schema({
 schema.pre('save', function(next) {
 
     this.user = this.userId
-    this.updated = new Date()
 
     next()
 })

@@ -80,7 +80,7 @@ async function deleteInvoice(invoiceId) {
             .catch(e => { throw e })
 
         await Model.deleteOne({invoiceId: invoiceId})
-            .catch(e => { throw Messages(e).invoiceaDeleteError})
+            .catch(e => { throw Messages(e).invoiceDeleteError})
 
         return invoiceId
 

@@ -16,8 +16,8 @@ module.exports = function($details, $message) {
             $details
         },
 
-        invoiceaDeleteError: {
-            key: 'invoiceaDeleteError',
+        invoiceDeleteError: {
+            key: 'invoiceDeleteError',
             code: 503,
             message: $message || 'Error al borrar la información de la factura',
             $details

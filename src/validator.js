@@ -104,10 +104,10 @@ function validator(options) {
         if(objs.indexOf(TYPE) >= 0)
             return $this.OPTIONS.VALUE = null
 
-        error(`${ NAME } no es un tipo de dato valido`)
-
         if(TYPE === 'array')
             return $this.OPTIONS.VALUE = []
+
+        error(`${ NAME } no es un tipo de dato valido`)
     }
 
     function validType() {

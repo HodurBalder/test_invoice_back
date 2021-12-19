@@ -1,5 +1,6 @@
 const Express = require("express")
 const Morgan = require('morgan')
+const Cors = require('cors')
 
 const Database = require('./database')
 const Router = require('../src/router')
@@ -8,7 +9,7 @@ const Response = require('./response')
 
 
 const App = Express()
-
+App.use(Cors())
 App.use(Express.static('public'))
 App.use(Express.json({
     limit: '10mb',

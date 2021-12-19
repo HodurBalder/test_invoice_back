@@ -16,17 +16,22 @@ function createInvoice(req) {
     let invoices = new Invoices(req)
 
     const data = {
-        userId: invoices.userId.get(),
-        invoiceId: invoices.invoiceId.get(),
-        companyClient: invoices.companyClient.get(),
-        fullNameClient: invoices.fullNameClient.get(),
-        addressClient: invoices.addressClient.get(),
-        zipCodeClient: invoices.zipCodeClient.get(),
-        concepts: invoices.concepts.get(),
-        subtotal: invoices.subtotal.get(),
-        tax: invoices.tax.get(),
-        discount: invoices.discount.get(),
-        total: invoices.total.get(),
+        user: req.user,
+        userId: req.user._id,
+        invoiceNum: invoices.invoiceNum.notRequired().get(),
+        companyClient: invoices.companyClient.notRequired().get(),
+        fullNameClient: invoices.fullNameClient.notRequired().get(),
+        addressClient: invoices.addressClient.notRequired().get(),
+        zipCodeClient: invoices.zipCodeClient.notRequired().get(),
+        countryClient: invoices.countryClient.notRequired().get(),
+        concepts: invoices.concepts.notRequired().get(),
+        notes: invoices.notes.notRequired().get(),
+        subtotal: invoices.subtotal.notRequired().get(),
+        tax: invoices.tax.notRequired().get(),
+        discount: invoices.discount.notRequired().get(),
+        total: invoices.total.notRequired().get(),
+        invoiceDate: invoices.invoiceDate.notRequired().get(),
+        dueDate: invoices.dueDate.notRequired().get()
     }
 
     return { data }
@@ -62,7 +67,7 @@ function updateInvoice(req) {
     }
 
     const props = [
-        'invoiceId',
+        'invoiceNum',
         'companyClient',
         'fullNameClient',
         'addressClient',
@@ -71,7 +76,9 @@ function updateInvoice(req) {
         'subtotal',
         'tax',
         'discount',
-        'total'
+        'total',
+        'invoiceDate',
+        'dueDate'
     ]
 
     data = updateValidation(data, props, req.body, invoices)
